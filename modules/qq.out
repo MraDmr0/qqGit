@@ -6,7 +6,7 @@ Begin of calculation...
 Simulation of qubit system
 ****************************************
 
-Calculation started at : 2024-10-05 10:32:53.013803
+Calculation started at : 2024-12-17 19:32:37.024080
 ****************************************
 
 Input parameters : 
@@ -14,16 +14,13 @@ Input parameters :
 P   = 2
 t_i = 0.0
 t_f = 1e-06
-N   = 1000
-n   = (1.0,0.0)
-w_r = 775000000000.0 , 8930000.0 , 3.86e-05 , 40900000.0
+N   = 10000
+n   = ((1+0j),0j)
+w_r = (775000000000+0j) , (8930000+0j) , (3.86e-05+0j) , (40900000+0j)
 w_l = 122000000000.0
 w   = 1.22e+11
 F   = 1
 ****************************************
 
-Calculation compleated successfully at : 2024-10-05 10:32:53.201348
-
-Elapsed time for main process : 0.187440872192 s 
-
-Reults written on 'qb.txt'
+[0.00000000e+00 1.00010001e-10 2.00020002e-10 ... 9.99799980e-07
+ 9.99899990e-07 1.00000000e-06]

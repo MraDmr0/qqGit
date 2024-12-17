@@ -50,22 +50,22 @@ def read_run(filein):
     F       = int(line_list[46].split('=')[1])
     ##
     if P == 2:
-        n    = np.array([n0,n1])
+        n    = np.array([n0,n1] , dtype = complex)
         nomr = np.sqrt(np.linalg.norm(n))
         n    = n/nomr
         #
-        wr   = np.array([wr00 , wr01 , wr02 , wr03])
+        wr   = np.array([wr00 , wr01 , wr02 , wr03] , dtype = complex)
         wl   = np.array([wl0])
 
     elif P == 4:
-        n    = np.array([n0,n1,n2,n3])
+        n    = np.array([n0,n1,n2,n3] , dtype = complex)
         nomr = np.sqrt(np.linalg.norm(n))
         n    = n/nomr
         #
         wr   = np.array([[wr00 , wr01 , wr02 , wr03],
                          [wr10 , wr11 , wr12 , wr13],
                          [wr20 , wr21 , wr22 , wr23],
-                         [wr30 , wr31 , wr32 , wr33]])
+                         [wr30 , wr31 , wr32 , wr33]] , dtype = complex)
         wl   = np.array([wl0 , wl1 , wl2 , wl3])
    
     else:

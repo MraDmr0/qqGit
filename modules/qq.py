@@ -4,7 +4,8 @@ import numpy as np
 import time
 from Read_input import read_run
 from Write_output import write_out_qb , write_outt
-from RK4 import rk4_qb
+from RK4 import rk4_qb 
+from Plot import plot_qb
 import sys
 #
 im = 1j
@@ -29,6 +30,7 @@ if P == 2:
     #
     time2 = time.time()
     #output
+    plot_qb(prefix)
     write_outt(prefix, time1 , time2)
     
 #ququart run

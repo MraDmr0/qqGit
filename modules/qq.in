@@ -11,7 +11,7 @@ ti     = 0
 #Final time
 tf     = 1E-6
 #Number of steps
-N       = 1000
+N       = 10000
 ##PARAMETERS OF THE RUN##
 #
 #Initial status

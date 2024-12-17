@@ -23,5 +23,5 @@ def write_out_qb(P , ti , tf , N , n , wr , wl , w , F):
 def write_outt(fileout, time1 , time2):
     print("Calculation compleated successfully at : "+ str(datetime.datetime.now())+"\n")
     print("Elapsed time for main process : " + str(time2-time1) + " s \n" )
-    print("Reults written on '"+fileout+".txt'")
+    print("Reults written on 'q_"+fileout+".txt'")
     
