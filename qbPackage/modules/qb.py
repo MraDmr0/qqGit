@@ -15,18 +15,18 @@ print("Execution of qq.py started\n")
 #input file reading
 filein = str(sys.argv[1])
 print("Reading input file "+str(filein)+"...\n")
-prefix , P , ti , tf , N, S , n , wr , wl , w , F = read_run(filein)
+prefix , D , ti , tf , N, S , psi , wr , wl , w , F = read_run(filein)
 #
 #qubit run
-if P == 2:
+if D == 2:
     print("Begin of calculation...")
     #output
-    write_out_qb(P , ti , tf , N,S , n , wr , wl , w , F)
+    write_out_qb(D , ti , tf , N,S , psi , wr , wl , w , F)
     #
     time1 = time.time()
     #
     #time evolution    
-    rk4_qb(prefix , n , ti , tf , N,S , wr , wl , w , F)
+    rk4_qb(prefix , psi , ti , tf , N, S , wr , wl , w , F)
     #
     time2 = time.time()
     #output

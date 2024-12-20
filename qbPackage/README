@@ -1,6 +1,6 @@
-Executable qb.py ver. 1.0
+Executable qb.py Ver. 1.0
 
-Python package that allows to simulate the time evolution of a two level system under the influence of an oscillating electric field, given the Rabi and Larmor frequencies. The time evolution is carried out through the standard 4th order Runge-Kutta method.
+Python package that allows to simulate the time evolution of a two level system under the influence of an oscillating electric field, given the Rabi and Larmor frequencies. The time evolution is carried out through the standard 4th order Runge-Kutta method to compute the occupations.
 
 ##DON'T MODIFY THE POSITIONS OF THE VARIABLES IN THE INPUT FILE#####
 
@@ -21,6 +21,6 @@ F      = envelope function of external impulse (= 1)
 
 Note that this version only supports calcualtions for P = 2.
 
-The next step is to implement a more efficient version of the algorithm and generalise the method to four level systems. Eventually also the possibility of using a different envelope function for the electric impulsewill be implemented.
+The next step is to implement a more efficient version of the algorithm and generalise the method to four level systems. Eventually also the possibility of using a different envelope function for the electric impulse will be implemented.
 
 Mario Di Mare , 19/12/2024. 

@@ -10,20 +10,20 @@ def read_run(filein):
     """
 
     input_file = open(filein , 'r')
-    line_list = input_file.readlines()    
-    prefix = str(line_list[5].split('=')[1])
-    prefix = prefix.strip() 
+    line_list  = input_file.readlines()    
+    prefix     = str(line_list[5].split('=')[1])
+    prefix     = prefix.strip() 
     # 
-    P  = int(line_list[7].split('=')[1])
+    D  = int(line_list[7].split('=')[1])
     ti = float(line_list[9].split('=')[1])
     tf = float(line_list[11].split('=')[1])
     N  = int(line_list[13].split('=')[1])
     S  = int(line_list[15].split('=')[1])
     #
-    n0      = float(line_list[19].split('=')[1])
-    n1      = float(line_list[20].split('=')[1])
-    n2      = float(line_list[21].split('=')[1])
-    n3      = float(line_list[22].split('=')[1])
+    psi0      = float(line_list[19].split('=')[1])
+    psi1      = float(line_list[20].split('=')[1])
+    psi2      = float(line_list[21].split('=')[1])
+    psi3      = float(line_list[22].split('=')[1])
     #
     wr00    = float(line_list[24].split('=')[1])
     wr01    = float(line_list[25].split('=')[1])
@@ -50,12 +50,12 @@ def read_run(filein):
     w       = float(line_list[46].split('=')[1])
     F       = int(line_list[48].split('=')[1])
     ##
-    n    = np.array([n0,n1] , dtype = complex)
-    nomr = np.sqrt(np.linalg.norm(n))
-    n    = n/nomr
+    psi    = np.array([psi0,psi1] , dtype = complex)
+    nomr = np.sqrt(np.linalg.norm(psi))
+    psi   = psi/nomr
     #
     wr   = np.array([wr00 , wr01 , wr02 , wr03] , dtype = complex)
     wl   = np.array([wl0])
 
 
-    return  prefix , P, ti , tf , N, S , n , wr , wl , w , F
+    return  prefix , D, ti , tf , N, S , psi , wr , wl , w , F
