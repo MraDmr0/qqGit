@@ -1,7 +1,9 @@
 import numpy as np
+from numba import njit , complex128
 #
 im = 1j
 #
+@njit
 def potential_qb(t , dt , wr , w , F):
     """
     wr is intended as the following array:
@@ -12,10 +14,9 @@ def potential_qb(t , dt , wr , w , F):
     wr[3]  = w - wl
     wr[4]  = w + wl
     """
-    V     = np.zeros((3)     , dtype = complex)
-    V0    = np.zeros((2,2) , dtype = complex)
-    V1    = np.zeros((2,2) , dtype = complex)
-    V2    = np.zeros((2,2) , dtype = complex)
+    V0    = np.zeros((2,2) , dtype = complex128)
+    V1    = np.zeros((2,2) , dtype = complex128)
+    V2    = np.zeros((2,2) , dtype = complex128)
     #
     V0[1,1] = wr[1]*np.cos(w*t)
     V0[1,0] = wr[0].conjugate()*(np.exp(-im*t*wr[3])+np.exp(im*t*wr[4]))
@@ -37,7 +38,6 @@ def potential_qb(t , dt , wr , w , F):
     V2[0,0] = wr[2]*np.cos(w*t)
     V2 *= -im*F
     #
-    V = np.array(([V0 ,V1 , V2]) , dtype = complex)
-    return V
+    return V0 , V1 , V2
 
 

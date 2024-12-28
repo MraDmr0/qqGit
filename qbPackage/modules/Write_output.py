@@ -1,5 +1,6 @@
 #Module for output writing
 import datetime
+from numpy import savetxt
 
 width = 40
 
@@ -26,3 +27,11 @@ def write_outt(fileout, time1 , time2):
     print("Elapsed time for main process : " + str(time2-time1) + " s \n" )
     print("Reults written on 'q_"+fileout+".txt'")
     
+def save_out(prefix , psiff , tff ): 
+     
+    q_save = open("psi_"+str(prefix)+".txt" , "w") 
+    t_save = open("t_"+str(prefix)+".txt" , "w") 
+    savetxt(q_save , psiff) 
+    savetxt(t_save , tff) 
+    q_save.close() 
+    t_save.close()

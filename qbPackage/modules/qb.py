@@ -1,10 +1,10 @@
-"Main executable file of qbPackage Ver. 1.0"
+"Main executable file of qbPackage Ver. 1.5"
 
 #import needed packages
 import numpy as np
 import time
 from Read_input import read_run
-from Write_output import write_out_qb , write_outt
+from Write_output import write_out_qb , write_outt , save_out
 from RK4 import rk4_qb 
 from Plot import plot_qb
 import sys
@@ -26,7 +26,8 @@ if D == 2:
     time1 = time.time()
     #
     #time evolution    
-    rk4_qb(prefix , psi , ti , tf , N, S , wr , wl , w , F)
+    psiff , tff = rk4_qb( psi , ti , tf , N, S , wr , wl , w , F)
+    save_out(prefix , psiff , tff)
     #
     time2 = time.time()
     #output

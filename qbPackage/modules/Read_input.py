@@ -57,5 +57,4 @@ def read_run(filein):
     wr   = np.array([wr00 , wr01 , wr02 , wr03] , dtype = complex)
     wl   = np.array([wl0])
 
-
-    return  prefix , D, ti , tf , N, S , psi , wr , wl , w , F
+    return  prefix , D , ti , tf , N , S , psi , wr , wl , w , F
