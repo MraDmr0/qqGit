@@ -1,6 +1,6 @@
 #Module for output writing
 import datetime
-from numpy import savetxt
+from numpy import savetxt , array_str
 
 width = 40
 
@@ -34,7 +34,7 @@ def write_out_qq(D , ti , tf , N , S , psi , wr , wl , w , F):
     print("N   = "  + str(N))
     print("S   = "  + str(S))
     print("n   = (" + str(psi[0])+","+str(psi[1])+")")
-    print("w_r = "  +str(wr[0,0])+" , "+ str(wr[0,1])+" , " + str(wr[0,2])+ " , " + str(wr[0,3]) + " , " +"\n" +str(wr[1,0])+" , " + str(wr[1,1])+" , " + str(wr[1,2])+ " , " + str(wr[1,3]) + " , " +" \n "+ str(wr[2,0])+" , "+ str(wr[2,1])+" , " + str(wr[2,2])+ " , " + str(wr[2,3]) + " , "+"\n" + str(wr[3,0])+ " , " + str(wr[3,1])+" , " + str(wr[3,2])+ " , " + str(wr[3,3])  )
+    print("wr = \n"   + array_str(wr))
     print("w_l = "  +  str(wl[0])+" , " + str(wl[1])+ " , " + str(wl[2]) + " , " + str(wl[3]))
     print("w   = "  + str(w))
     print("F   = "  + str(F))

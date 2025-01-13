@@ -8,7 +8,7 @@ def read_run(filein):
     Reads the parameters of the run from input
 
     """
-
+    #open the input file
     input_file = open(filein , 'r')
     line_list  = input_file.readlines()    
     prefix     = str(line_list[5].split('=')[1])
