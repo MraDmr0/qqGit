@@ -36,19 +36,18 @@ def potential_qb(t0 , dt , wr , w , F):
 
 
 @njit
-def potential_qq(t , dt , wr , wl , w , F):
+def potential_qq(t0 , dt , wr , wl , w , F):
     """Function that computes the qubit potential at the three times needed for the RK4 algorithm.
         The Rabi frequencies are given in matrix form, while Larmor frequencies are intended as the energy of each level in meV"""
 
-    V     = np.zeros((3,4,4) , dtype = complex128)
-
+    V   = np.zeros((3,4,4) , dtype = complex128)
+    t   = np.array([t0 , t0+dt*0.5 , t0+dt])
     for k in range(3):
         for i in range(4):
             for j in range(4):
-                V[k,i,j] = wr[i,j]*np.exp((im/h_bar)*(wl[i] - wl[j])*t)
+                V[k,i,j] = wr[i,j]*np.exp((im/h_bar)*(wl[i] - wl[j])*t[k])
    
-        V[k,:,:] *= -im*F*np.cos(w*t)
-        t += dt*0.5
+        V[k,:,:] *= -im*F*np.cos(w*t[k])
 
     return V
 
