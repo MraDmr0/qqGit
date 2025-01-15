@@ -27,9 +27,10 @@ if D == 2:
     #
     #time evolution    
     psiff , tff = rk4_qb( psi , ti , tf , N, S , wr , wl , w , F)
-    save_out(prefix , psiff , tff)
     #
     time2 = time.time()
+    save_out(prefix , psiff , tff)
+    #
     #output
     write_outt(prefix, time1 , time2)
     plot_qb(prefix)
@@ -42,9 +43,9 @@ elif D == 4:
     #
     #time evolution    
     psiff , tff = rk4_qq( psi , ti , tf , N, S , wr , wl , w , F)
+    time2 = time.time()
     save_out(prefix , psiff , tff)
     #
-    time2 = time.time()
     #output
     write_outt(prefix, time1 , time2)
     plot_qq(prefix)
