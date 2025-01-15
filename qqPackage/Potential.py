@@ -6,7 +6,7 @@ h_bar = 6.582119569E-13
 im = 1j
 #
 @njit
-def potential_qb(t , dt , wr , w , F):
+def potential_qb(t0 , dt , wr , w , F):
     """
     Function that computes the qubit potential at the three times needed for the RK4 algorithm.
     
@@ -18,34 +18,21 @@ def potential_qb(t , dt , wr , w , F):
     wr[3]  = w - wl
     wr[4]  = w + wl
     
-    The Larmor frequency is the energy difference between the two states
+    The Larmor frequency is the difference between the two states
     """
     #Variables assignement
-    V0    = np.zeros((2,2) , dtype = complex128)
-    V1    = np.zeros((2,2) , dtype = complex128)
-    V2    = np.zeros((2,2) , dtype = complex128)
-    #Potential at t= t_0
-    V0[1,1] = wr[1]*np.cos(w*t)
-    V0[1,0] = wr[0].conjugate()*(np.exp(-im*t*wr[3])+np.exp(im*t*wr[4]))
-    V0[0,1] = wr[0]*(np.exp(im*t*wr[3])+np.exp(-im*t*(wr[4])))   
-    V0[0,0] = wr[2]*np.cos(w*t)
-    V0 *= -im*F
-    #Potential at t= t_0+dt/2
-    t += dt*0.5 
-    V1[1,1] = wr[1]*np.cos(w*t)
-    V1[1,0] = wr[0].conjugate()*(np.exp(-im*t*(wr[3]))+np.exp(im*t*(wr[4])))
-    V1[0,1] = wr[0]*(np.exp(im*t*(wr[3]))+np.exp(-im*t*(wr[4])))   
-    V1[0,0] = wr[2]*np.cos(w*t)
-    V1 *= -im*F
-    #Potential at t= t_0 + dt
-    t += dt*0.5
-    V2[1,1] = wr[1]*np.cos(w*t)
-    V2[1,0] = wr[0].conjugate()*(np.exp(-im*t*(wr[3]))+np.exp(im*t*(wr[4])))
-    V2[0,1] = wr[0]*(np.exp(im*t*(wr[3]))+np.exp(-im*t*(wr[4])))   
-    V2[0,0] = wr[2]*np.cos(w*t)
-    V2 *= -im*F
-    #
-    return V0 , V1 , V2
+    V    = np.zeros((3,2,2) , dtype = complex128)
+
+    t = np.array([t0 , t0+0.5*dt , t0+dt])
+    
+    for k in range(3):
+      V[k,1,1] = wr[1]*np.cos(w*t[k])
+      V[k,1,0] = wr[0].conjugate()*(np.exp(-im*t[k]*wr[3])+np.exp(im*t[k]*wr[4]))
+      V[k,0,1] = wr[0]*(np.exp(im*t[k]*wr[3])+np.exp(-im*t[k]*(wr[4])))   
+      V[k,0,0] = wr[2]*np.cos(w*t[k])
+    V *= -im*F
+    
+    return V
 
 
 @njit
