@@ -39,12 +39,12 @@ def rk4_qb(psi0 , t0 , tf , N , S , wr , wl , w , F ):
    #RK4 cycle
     for j in range(1 , N+1):
     
-        V0 , V1 , V2  = potential_qb(t[j-1] , dt , wrr, w , F )
+        V  = potential_qb(t[j-1] , dt , wrr, w , F )
         
-        K0 = np.dot(V0 , psi0)
-        K1 = np.dot(V1 , psi0 + 0.5*dt*K0)
-        K2 = np.dot(V1 , psi0 + 0.5*dt*K1)
-        K3 = np.dot(V2 , psi0 + dt*K2)
+        K0 = np.dot(V[0] , psi0)
+        K1 = np.dot(V[1] , psi0 + 0.5*dt*K0)
+        K2 = np.dot(V[1] , psi0 + 0.5*dt*K1)
+        K3 = np.dot(V[2] , psi0 + dt*K2)
 
         psi0 = psi0 + dt/6*(K0 + 2*K1 + 2*K2 + K3)
         #renormalizaton of computed solution
