@@ -23,7 +23,7 @@ def write_out_qb(D , ti , tf , N , S , psi , wr , wl , w , F):
     print("*" * width+"\n")
 
 def write_out_qq(D , ti , tf , N , S , psi , wr , wl , w , F):
-    print("Simulation of qubit system")
+    print("Simulation of ququart system")
     print("*" * width+"\n")
     print("Calculation started at : " + str(datetime.datetime.now()))
     print("*" * width+"\n")
