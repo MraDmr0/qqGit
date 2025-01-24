@@ -2,7 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def plot_qb(prefix):
+def plot_qb(prefix , *args , **kwargs):
+    Eout = kwargs.get('Eout', False)
     """Function that plots the computed square moduli of the two components of the wavefunction, 
    stored in psi_preix.txt  and t_prefix, as a function of time"""
    
@@ -16,6 +17,9 @@ def plot_qb(prefix):
     #append data to the figure
     ax.plot(t , abs(psi)[:,0]**2 , label = r"State $|0\rangle$")
     ax.plot(t , abs(psi)[:,1]**2 , label = r"State $|1\rangle$")
+    ax.plot(t , Eout , ls = "--", c = "grey", alpha = 0.7,  label = r"Envelope function")
+    if type(Eout) != bool:
+      ax.plot(t , Eout , ls = "--", c = "grey",  alpha = 0.7 , label = r"Envelope function")
     #personalization
     ax.set_xlabel(r"Time $(\mu s)$")
     ax.set_ylabel("$|\Psi|^2$")
@@ -23,10 +27,11 @@ def plot_qb(prefix):
     #save fiugre
     plt.savefig(prefix+".png")
 
-def plot_qq(prefix):
+def plot_qq(prefix , *args , **kwargs):
     """Function that plots the computed square moduli of the four components of the wavefunction, 
    stored in psi_preix.txt  and t_prefix, as a function of time"""
-    
+    Eout = kwargs.get('Eout', False)
+
     #load wfc and time axis
     psi      = np.loadtxt("psi_" +prefix+".txt" , dtype = complex)
     t        = np.loadtxt("t_"   +prefix+".txt" , dtype = float)
@@ -39,6 +44,9 @@ def plot_qq(prefix):
     ax.plot(t , abs(psi)[:,1]**2 , label = r"State $|1\rangle$")
     ax.plot(t , abs(psi)[:,2]**2 , label = r"State $|2\rangle$")
     ax.plot(t , abs(psi)[:,3]**2 , label = r"State $|3\rangle$")
+    if type(Eout) != bool:
+      ax.plot(t , Eout , ls = "--", c = "grey",  alpha = 0.7 , label = r"Envelope function")
+
     #personalization
     ax.set_xlabel(r"Time $(\mu s)$")
     ax.set_ylabel("Occupations")
