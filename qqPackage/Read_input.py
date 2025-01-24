@@ -6,7 +6,6 @@ import numpy as np
 def read_run(filein):
     """
     Reads the parameters of the run from input
-
     """
     #open the input file
     input_file = open(filein , 'r')
@@ -48,8 +47,15 @@ def read_run(filein):
     wl3     = float(line_list[44].split('=')[1])
     #
     w       = float(line_list[46].split('=')[1])
-    F       = int(line_list[48].split('=')[1])
-    ##
+    #envelope
+    mode    = str(line_list[48].split('=')[1].strip())
+    F       = float(line_list[50].split('=')[1])
+    t0      = float(line_list[51].split('=')[1])
+    t1      = float(line_list[52].split('=')[1])
+    sigma   = float(line_list[53].split('=')[1])
+    t00   = float(line_list[54].split('=')[1])
+    t11   = float(line_list[55].split('=')[1])
+    ######################################
     psi    = np.array([psi0,psi1] , dtype = complex)
     nomr   = np.sqrt(np.linalg.norm(psi))
     psi    = psi/nomr
@@ -70,5 +76,6 @@ def read_run(filein):
                        [wr30 , wr31 , wr32 , wr33]] , dtype = complex)
       wl   = np.array([wl0 , wl1 , wl2 , wl3])
 
-    return  prefix , D , ti , tf , N , S , psi , wr , wl , w , F
+
+    return  prefix , D , ti , tf , N , S , psi , wr , wl , w , mode , F , t0 , t1 , sigma , t00 , t11
 
