@@ -27,7 +27,7 @@ t1     = final time of first impulse (s)
 sigma  = spreading for gaussian shape
 t0     = initial time of second impulse (s)
 t1     = final time of second impulse (s)
-Note that the current version only supports calcualtions for F = 1.
+
 ###################################################################################
 ###Added Features###
 With this release it has been added the possibility of executing the simulations also for the four level system, already optimized with numba. 
